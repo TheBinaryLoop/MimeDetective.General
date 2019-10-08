@@ -7,49 +7,30 @@ namespace MimeDetective.InMemory
 {
     public static class MimeExtensions
     {
+        private static readonly FileType DefaultFallback = new FileType(null, "", "application/octet-stream");
+
         public static FileType DetectMimeType(this Stream stream)
         {
-            var tmp = MimeTypes.AllTypes.Select(x => x.HeaderOffset + x.Header.Length).OrderByDescending(x => x)
-                .FirstOrDefault();
-            var data = new byte[tmp];
+            var maxLengthToAnalyze = MimeTypes.AllTypes.Max(x => x.HeaderOffset + x.Header.Length);
+
+            var data = new byte[maxLengthToAnalyze];
             stream.Read(data, 0, data.Length);
             stream.Position = 0;
 
-            IEnumerable<byte?> GetHeader(FileType t) => data
-                .Skip(t.HeaderOffset)
-                .Take(t.Header.Length)
-                .Cast<byte?>();
-
-            var comparer = new IgnoreNullComparer();
-
-            var result = MimeTypes.AllTypes
-                .OrderByDescending(t => t.Header.Length)
-                .FirstOrDefault(t => t.Header.SequenceEqual(GetHeader(t), comparer));
-
-            if (result == null)
-                return null;
-
-            if (!result.Equals(MimeTypes.ZIP))
-                return result;
-
-            return CheckForMsOfficeTypes(stream) ?? MimeTypes.ZIP;
+            return DetectMimeType(data);
         }
 
         public static FileType DetectMimeType(this byte[] file)
         {
-            IEnumerable<byte?> GetHeader(FileType t) => file
-                .Skip(t.HeaderOffset)
-                .Take(t.Header.Length)
-                .Cast<byte?>();
-
             var comparer = new IgnoreNullComparer();
 
             var result = MimeTypes.AllTypes
-                .OrderByDescending(t => t.Header.Length)
-                .FirstOrDefault(t => t.Header.SequenceEqual(GetHeader(t), comparer));
+                .OrderBy(t => t.HeaderOffset)
+                .ThenByDescending(t => t.Header.Length)
+                .FirstOrDefault(t => t.Header.SequenceEqual(GetHeader(file, t), comparer));
 
             if (result == null)
-                return null;
+                return DefaultFallback;
 
             if (!result.Equals(MimeTypes.ZIP))
                 return result;
@@ -120,6 +101,15 @@ namespace MimeDetective.InMemory
                 return MimeTypes.JAR;
             
             return null;
+        }
+
+        private static byte?[] GetHeader(byte[] data, FileType fileType)
+        {
+            return data
+                .Skip(fileType.HeaderOffset)
+                .Take(fileType.Header.Length)
+                .Cast<byte?>()
+                .ToArray();
         }
 
         private class IgnoreNullComparer : IEqualityComparer<byte?>
