@@ -2,15 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.1.0.1</AssemblyVersion>
-    <FileVersion>0.1.0.1</FileVersion>
-    <Authors>Anton Hryzodub</Authors>
-    <Description>A simple library that detects the actual MIME type of the file.
-In contrast to other versions, It does this in memory.</Description>
-    <Version>0.1.0.1</Version>
-    <Copyright>Anton Hryzodub</Copyright>
-    <PackageProjectUrl>https://github.com/hryz/MimeDetective.InMemory</PackageProjectUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Authors>yakivyusin</Authors>
+    <Description>Fork of the TheBinaryLoop/MimeDetective.General with some refactoring and new formats.</Description>
+    <Version>1.0.0.0</Version>
+    <Copyright></Copyright>
+    <PackageProjectUrl>https://github.com/yakivyusin/MimeDetective.InMemory.Ext</PackageProjectUrl>
+    <PackageId>MimeDetective.InMemory.Ext</PackageId>
+    <Company />
+    <Product>MimeDetective.InMemory.Ext</Product>
   </PropertyGroup>
 
 </Project>
