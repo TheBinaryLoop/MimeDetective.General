@@ -13,6 +13,7 @@
     <PackageId>MimeDetective.InMemory.Ext</PackageId>
     <Company />
     <Product>MimeDetective.InMemory.Ext</Product>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
