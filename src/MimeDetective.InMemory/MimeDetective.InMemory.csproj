@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.1;net461</TargetFrameworks>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
     <Authors>yakivyusin</Authors>
     <Description>Fork of the TheBinaryLoop/MimeDetective.General with some refactoring and improved formats detection.</Description>
-    <Version>1.0.1.0</Version>
+    <Version>1.0.2.0</Version>
     <Copyright></Copyright>
     <PackageProjectUrl>https://github.com/yakivyusin/MimeDetective.InMemory.Ext</PackageProjectUrl>
     <PackageId>MimeDetective.InMemory.Ext</PackageId>

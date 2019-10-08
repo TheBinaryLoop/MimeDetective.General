@@ -9,7 +9,7 @@ namespace MimeDetective.InMemory
 {
     public static class MimeExtensions
     {
-        private static readonly FileType DefaultFallback = new FileType(null, "", "application/octet-stream");
+        private static readonly FileType DefaultFallback = new FileType(null, "application/octet-stream");
 
         public static FileType DetectMimeType(this Stream stream)
         {
