@@ -7,6 +7,8 @@ namespace MimeDetective.InMemory
 {
     public static class MimeExtensions
     {
+        private static readonly FileType DefaultFallback = new FileType(null, "", "application/octet-stream");
+
         public static FileType DetectMimeType(this Stream stream)
         {
             var maxLengthToAnalyze = MimeTypes.AllTypes.Max(x => x.HeaderOffset + x.Header.Length);
@@ -28,7 +30,7 @@ namespace MimeDetective.InMemory
                 .FirstOrDefault(t => t.Header.SequenceEqual(GetHeader(file, t), comparer));
 
             if (result == null)
-                return null;
+                return DefaultFallback;
 
             if (!result.Equals(MimeTypes.ZIP))
                 return result;
