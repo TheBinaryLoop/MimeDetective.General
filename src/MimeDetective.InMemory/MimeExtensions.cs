@@ -23,7 +23,8 @@ namespace MimeDetective.InMemory
             var comparer = new IgnoreNullComparer();
 
             var result = MimeTypes.AllTypes
-                .OrderByDescending(t => t.Header.Length)
+                .OrderBy(t => t.HeaderOffset)
+                .ThenByDescending(t => t.Header.Length)
                 .FirstOrDefault(t => t.Header.SequenceEqual(GetHeader(file, t), comparer));
 
             if (result == null)
