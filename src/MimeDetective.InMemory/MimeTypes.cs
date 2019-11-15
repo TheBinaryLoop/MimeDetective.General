@@ -7,10 +7,15 @@ namespace MimeDetective.InMemory
     {
         static MimeTypes()
         {
-            AllTypes = new List<FileType> 
-            { 
+            AllTypes = new List<FileType>
+            {
                 PDF, WORD, EXCEL, JPEG, ZIP, RAR, RTF, PNG, PPT, GIF, DLL_EXE, MSDOC,
-                BMP, DLL_EXE, /*ZIP_7z,*/ ZIP_7z_2, GZ_TGZ, TAR_ZH, TAR_ZV, OGG, ICO, XML, MIDI, FLV, WAVE, DWG, DEB, PST, PSD,
+                BMP, DLL_EXE, /*ZIP_7z,*/ ZIP_7z_2, GZ_TGZ, TAR_ZH, TAR_ZV, OGG, ICO, XML, MIDI, FLV, WAVE,
+                DWG_AutoCAD_v12_R2, DWG_AutoCAD_v13_R3, DWG_AutoCAD_v140_R4, DWG_AutoCAD_v205_R5, DWG_AutoCAD_v210_R6, DWG_AutoCAD_v25_R7,
+                DWG_AutoCAD_v26_R8, DWG_AutoCAD_v90_R9, DWG_AutoCAD_v10_R10, DWG_AutoCAD_v11_v12_R12, DWG_AutoCAD_v13_R13, DWG_AutoCAD_v14_R14,
+                DWG_AutoCAD_v15_v151_v152, DWG_AutoCAD_v16_v161_v162, DWG_AutoCAD_v17_v171_v172, DWG_AutoCAD_v18_v181_v182,
+                DWG_AutoCAD_v19_v191_v20_v201_v202, DWG_AutoCAD_v22,
+                /*DWG,*/ DEB, PST, PSD,
                 AES, SKR, SKR_2, PKR, EML_FROM, ELF, TXT_UTF8, TXT_UTF16_BE, TXT_UTF16_LE, TXT_UTF32_BE, TXT_UTF32_LE, TIFF, BZ2,
                 PYC_1_5, PYC_1_6, PYC_2_0, PYC_2_1, PYC_2_2, PYC_2_3_A0_1, PYC_2_3_A0_2, PYC_2_3_A0_3, PYC_2_4_A0, PYC_2_4_A3, PYC_2_4_B1,
                 PYC_2_5_A0_1, PYC_2_5_A0_2, PYC_2_5_A0_3, PYC_2_5_A0_4, PYC_2_5_B3_1, PYC_2_5_B3_2, PYC_2_5_C1, PYC_2_5_C2, PYC_2_6_A0,
@@ -304,6 +309,122 @@ namespace MimeDetective.InMemory
         public static readonly FileType PYC_3_7_B5 = new FileType(new byte?[] { 0x42, 0x0d }, "pyc", "application/octet-stream", "Python 3.7b5");
 
         // System.Net.IPAddress.NetworkToHostOrder(3394).ToString("x").Substring(0, 4)
+
+        #endregion
+
+        #region AutoCAD
+
+        /// <summary>
+        /// AutoCAD v1.2 (Release 2)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v12_R2 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x2E, 0x32 },
+            "dwg", "application/acad", "AutoCAD v1.2 (Release 2)");
+
+        /// <summary>
+        /// AutoCAD v1.3 (Release 3)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v13_R3 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x2E, 0x33 },
+            "dwg", "application/acad", "AutoCAD v1.3 (Release 3)");
+
+        /// <summary>
+        /// AutoCAD v1.40 (Release 4)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v140_R4 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x2E, 0x34, 0x30 },
+            "dwg", "application/acad", "AutoCAD v1.40 (Release 4)");
+
+        /// <summary>
+        /// AutoCAD v2.05 (Release 5)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v205_R5 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x2E, 0x35, 0x30 },
+            "dwg", "application/acad", "AutoCAD v2.05 (Release 5)");
+
+        /// <summary>
+        /// AutoCAD v2.10 (Release 6)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v210_R6 = new FileType(new byte?[] { 0x41, 0x43, 0x32, 0x2E, 0x31, 0x30 },
+            "dwg", "application/acad", "AutoCAD v2.10 (Release 6)");
+
+        /// <summary>
+        /// AutoCAD v2.5 (Release 7)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v25_R7 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x30, 0x32 },
+            "dwg", "application/acad", "AutoCAD v2.5 (Release 7)");
+
+        /// <summary>
+        /// AutoCAD v2.6 (Release 8)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v26_R8 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x30, 0x33 },
+            "dwg", "application/acad", "AutoCAD v2.6 (Release 8)");
+
+        /// <summary>
+        /// AutoCAD v9.0 (Release 9)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v90_R9 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x30, 0x34 },
+            "dwg", "application/acad", "AutoCAD v9.0 (Release 9)");
+
+        /// <summary>
+        /// AutoCAD v10.0 (Release 10)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v10_R10 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x30, 0x36 },
+            "dwg", "application/acad", "AutoCAD v10.0 (Release 10)");
+
+        /// <summary>
+        /// AutoCAD v11.0 (Release 11)/v12.0 (Release 12)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v11_v12_R12 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x30, 0x39 },
+            "dwg", "application/acad", "AutoCAD v11.0 (Release 11)/v12.0 (Release 12)");
+
+        /// <summary>
+        /// AutoCAD v13.0 (Release 13)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v13_R13 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x31, 0x32 },
+            "dwg", "application/acad", "AutoCAD v13.0 (Release 13)");
+
+        /// <summary>
+        /// AutoCAD v14.0 (Release 14)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v14_R14 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x31, 0x34 },
+            "dwg", "application/acad", "AutoCAD v14.0 (Release 14)");
+
+        /// <summary>
+        /// AutoCAD 2000 (v15.0)/2000i (v15.1)/2002 (v15.2) -- (Releases 15-17)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v15_v151_v152 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x31, 0x35 },
+            "dwg", "application/acad", "AutoCAD 2000 (v15.0)/2000i (v15.1)/2002 (v15.2) -- (Releases 15-17)");
+
+        /// <summary>
+        /// AutoCAD 2004 (v16.0)/2005 (v16.1)/2006 (v16.2) -- (Releases 18-20)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v16_v161_v162 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x31, 0x38 },
+            "dwg", "application/acad", "AutoCAD 2004 (v16.0)/2005 (v16.1)/2006 (v16.2) -- (Releases 18-20)");
+
+        /// <summary>
+        /// AutoCAD 2007 (v17.0)/2008 (v17.1)/2009 (v17.2) -- (Releases 21-23)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v17_v171_v172 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x32, 0x31 },
+            "dwg", "application/acad", "AutoCAD 2007 (v17.0)/2008 (v17.1)/2009 (v17.2) -- (Releases 21-23)");
+
+        /// <summary>
+        /// AutoCAD 2010 (v18.0)/2011 (v18.1)/2012 (v18.2) -- (Releases 24-26)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v18_v181_v182 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x32, 0x34 },
+            "dwg", "application/acad", "AutoCAD 2010 (v18.0)/2011 (v18.1)/2012 (v18.2) -- (Releases 24-26)");
+
+        /// <summary>
+        /// AutoCAD 2013 (v19.0)/2014 (v19.1)/2015 (v20.0)/2016 (v20.1)/2017 (v20.2) -- (Releases 27-31)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v19_v191_v20_v201_v202 = new FileType(
+            new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x32, 0x37 }, "dwg", "application/acad",
+            "AutoCAD 2013 (v19.0)/2014 (v19.1)/2015 (v20.0)/2016 (v20.1)/2017 (v20.2) -- (Releases 27-31)");
+
+        /// <summary>
+        /// AutoCAD 2018 (v22.0) (Release 32)
+        /// </summary>
+        public static readonly FileType DWG_AutoCAD_v22 = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30, 0x33, 0x32 },
+            "dwg", "application/acad", "AutoCAD 2018 (v22.0) (Release 32)");
+
+        //Generic AutoCAD drawing image/vnd.dwg  image/x-dwg application/acad
+        public static readonly FileType DWG = new FileType(new byte?[] { 0x41, 0x43, 0x31, 0x30 }, "dwg", "application/acad");
 
         #endregion
 
