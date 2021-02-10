@@ -1,16 +1,40 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.1.0.1</AssemblyVersion>
-    <FileVersion>0.1.0.1</FileVersion>
-    <Authors>Anton Hryzodub</Authors>
+    <TargetFrameworks>netstandard1.2;netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AssemblyVersion>0.1.0.2</AssemblyVersion>
+    <FileVersion>0.1.0.2</FileVersion>
+    <Authors>Anton Hryzodub, Lukas Eßmann</Authors>
     <Description>A simple library that detects the actual MIME type of the file.
 In contrast to other versions, It does this in memory.</Description>
-    <Version>0.1.0.1</Version>
-    <Copyright>Anton Hryzodub</Copyright>
-    <PackageProjectUrl>https://github.com/hryz/MimeDetective.InMemory</PackageProjectUrl>
+    <Version>0.1.0.2</Version>
+    <Copyright>Anton Hryzodub, Lukas Eßmann</Copyright>
+    <PackageProjectUrl>https://github.com/TheBinaryLoop/MimeDetective.InMemory</PackageProjectUrl>
+    <PackageId>MimeDetective.General</PackageId>
+    <RepositoryUrl>https://github.com/TheBinaryLoop/MimeDetective.InMemory</RepositoryUrl>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageTags>mimetype memory magic number</PackageTags>
+    <Product>MimeDetective.General</Product>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="SemanticVersion">
+      <Version>2.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SemanticVersion" Version="2.0.0" />
+  </ItemGroup>
 
 </Project>
