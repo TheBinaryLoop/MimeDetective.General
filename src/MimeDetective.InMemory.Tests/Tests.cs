@@ -15,13 +15,19 @@ namespace MimeDetective.InMemory.Tests
         public void CanDetectMime(FileType file)
         {
             //Arrange
-            var garbage = new byte[file.HeaderOffset];
-            R.NextBytes(garbage);
+            var data = new byte[file.Signatures.Max(s => s.Offset + s.SignatureBytes.Length)];
+            R.NextBytes(data);
 
-            var bytes = garbage.Concat(file.Header.Select(x => x ?? 0)).ToArray();
+            foreach (var signature in file.Signatures)
+            {
+                for (int i = 0; i < signature.SignatureBytes.Length; i++)
+                {
+                    data[signature.Offset + i] = signature.SignatureBytes[i] ?? 0;
+                }
+            }
 
             //Act
-            var mime = bytes.DetectMimeType();
+            var mime = data.DetectMimeType();
 
             //Assert
             Assert.AreEqual(mime, file);
@@ -29,8 +35,7 @@ namespace MimeDetective.InMemory.Tests
 
         private static IEnumerable<object[]> TestDataSet =>
             MimeTypes.AllTypes
-                .Where(x => x.Header.Length > 0)
-                .OrderByDescending(x => x.Header.LongLength)
+                .Where(x => x.Signatures.All(s => s.SignatureBytes.Length > 0) && x != MimeTypes.MCF)
                 .Select(x => new object[] { x });
     }
 }

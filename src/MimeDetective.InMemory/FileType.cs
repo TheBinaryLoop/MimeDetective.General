@@ -2,36 +2,22 @@ using System;
 
 namespace MimeDetective.InMemory
 {
-    public class FileType : IEquatable<FileType>
+    public sealed class FileType : IEquatable<FileType>
     {
-        public FileType(byte?[] header, string extension, string mime)
-            : this(header, extension, mime, string.Empty)
+        public FileType(string extension, string mime, params FileSignature[] signatures)
+            : this(extension, mime, string.Empty, signatures)
         {
         }
 
-        public FileType(byte?[] header, string extension, string mime, string description)
-            : this(header, 0, extension, mime, description)
+        public FileType(string extension, string mime, string description, params FileSignature[] signatures)
         {
-        }
-
-
-        public FileType(byte?[] header, int offset, string extension, string mime)
-            : this(header, offset, extension, mime, string.Empty)
-        {
-        }
-
-        public FileType(byte?[] header, int offset, string extension, string mime, string description)
-        {
-            Header = null;
-            Header = header;
-            HeaderOffset = offset;
+            Signatures = signatures;
             Extension = extension;
             Mime = mime;
             Description = description;
         }
 
-        public byte?[] Header { get; }
-        public int HeaderOffset { get; }
+        public FileSignature[] Signatures { get; }
         public string Extension { get; }
         public string Mime { get; }
         public string Description { get; set; }
